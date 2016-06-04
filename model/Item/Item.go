@@ -1,7 +1,7 @@
 package item
 
 import (
-	"JetPack/model/PriceInfo"
+	"github.com/p4tin/jetpack/model/PriceInfo"
 )
 
 // Item is a basket/shopping cart item that contains the Sku#, the quantity and a PriceInfo that basically has the Sku unit price.

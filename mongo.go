@@ -15,7 +15,7 @@ type TaxInfo struct {
 	Tax     string        `bson:"tax"`
 }
 
-func main() {
+func MongoMain() {
 	session, err := mgo.Dial("localhost")
 	if err != nil {
 		panic(err)

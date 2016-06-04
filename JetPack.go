@@ -1,28 +1,21 @@
 package main
 
 import (
-	"JetPack/model/Order"
-	"JetPack/model/PriceInfo"
-	"JetPack/model/PricingAdjustment"
 	"encoding/json"
-	"flag"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/gorilla/mux"
+	"github.com/p4tin/jetpack/model/Order"
+	"github.com/p4tin/jetpack/model/PriceInfo"
+	"github.com/p4tin/jetpack/model/PricingAdjustment"
 )
 
 func main() {
-	web := flag.Bool("web", false, "a bool")
-	flag.Parse()
-
-	if *web {
-		mux := http.NewServeMux()
-		//		mux.HandleFunc("/pricing", Pricing)
-		log.Fatal(http.ListenAndServe(":7777", mux))
-	} else {
-		log.Println("core function...")
-	}
-
+	mux := mux.NewRouter()
+	mux.HandleFunc("/pricing", Pricing)
+	log.Fatal(http.ListenAndServe(":4101", mux))
 }
 
 func Pricing(w http.ResponseWriter, r *http.Request) {

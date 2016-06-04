@@ -1,7 +1,7 @@
 package priceinfo
 
 import (
-	"JetPack/model/PricingAdjustment"
+	"github.com/p4tin/jetpack/model/PricingAdjustment"
 	"time"
 )
 

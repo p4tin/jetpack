@@ -1,7 +1,7 @@
 package contactinfo
 
 import (
-	"JetPack/model/Address"
+	"github.com/p4tin/jetpack/model/Address"
 )
 
 type ContactInfo struct {

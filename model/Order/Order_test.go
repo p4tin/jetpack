@@ -1,8 +1,8 @@
 package order
 
 import (
-	"JetPack/model/Item"
-	"JetPack/model/Promotion"
+	"github.com/p4tin/jetpack/model/Item"
+	"github.com/p4tin/jetpack/model/Promotion"
 	"testing"
 )
 

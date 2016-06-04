@@ -4,11 +4,11 @@ import (
 	"math"
 	"sync"
 
-	"JetPack/model/Address"
-	"JetPack/model/Item"
-	"JetPack/model/PriceInfo"
-	"JetPack/model/PricingAdjustment"
-	"JetPack/model/Promotion"
+	"github.com/p4tin/jetpack/model/Address"
+	"github.com/p4tin/jetpack/model/Item"
+	"github.com/p4tin/jetpack/model/PriceInfo"
+	"github.com/p4tin/jetpack/model/PricingAdjustment"
+	"github.com/p4tin/jetpack/model/Promotion"
 )
 
 type Order struct {
