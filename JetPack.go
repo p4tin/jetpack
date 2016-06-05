@@ -30,8 +30,7 @@ func Pricing(w http.ResponseWriter, r *http.Request) {
 
 		w.Write([]byte("Hello " + order.ShippingAddress.Address1))
 	} else {
-		if r.URL.Query().
-			Get("forceGet") == "true" {
+		if r.URL.Query().Get("forceGet") == "true" {
 			adjustments := pricingadjustment.PricingAdjustment{AdjustmentDescription: "raw", Amount: 12.0}
 			priceInfos := priceinfo.PriceInfo{Type: priceinfo.OrderPriceInfo, Amount: 12.0, Adjustments: adjustments, ProcessedTime: time.Now(), CurrencyCode: "USD"}
 			w.Header().Set("Content-Type", "application/json; charset=UTF-8")
