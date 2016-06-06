@@ -38,20 +38,20 @@ func TestPriceOrder(t *testing.T) {
 	if o == nil {
 		t.Errorf("TestPriceOrder returned a nil expected an Order!!")
 	}
-	o.AddItem(*item.NewItem("1", 1, 0.99))
-	o.AddItem(*item.NewItem("2", 2, 1.00))
+	o.AddItem(*item.NewItem("100001", 1, 0.99))
+	o.AddItem(*item.NewItem("100002", 2, 1.00))
 
 	o.PriceOrder()
 
-	if o.Items[0].ItemPriceInfo.Amount != 0.99 {
+	if o.Items[0].ItemPriceInfo.Amount != 24.95 {
 		t.Errorf("TestPriceOrder-Item returned %f expected %f", o.Items[0].ItemPriceInfo.Amount, 0.99)
 	}
 
-	if o.Items[1].ItemPriceInfo.Amount != 2.00 {
+	if o.Items[1].ItemPriceInfo.Amount != 10.70 {
 		t.Errorf("TestPriceOrder-Item returned %f expected %f", o.Items[0].ItemPriceInfo.Amount, 2.00)
 	}
 
-	if o.OrderPriceInfo.Amount != 2.99 {
+	if o.OrderPriceInfo.Amount != 35.65 {
 		t.Errorf("TestPriceOrder-Order returned %f expected %f", o.OrderPriceInfo.Amount, 2.99)
 	}
 }
@@ -66,11 +66,11 @@ func TestPriceOrderWithPromo(t *testing.T) {
 	if o == nil {
 		t.Errorf("TestPriceOrderWithPromo returned a nil expected an Order!!")
 	}
-	o.AddItem(*item.NewItem("1", 1, 0.99))
-	o.AddItem(*item.NewItem("2", 2, 1.00))
+	o.AddItem(*item.NewItem("100001", 1, 0.99))
+	o.AddItem(*item.NewItem("100002", 2, 1.00))
 
 	o.PriceOrder()
-	if o.OrderPriceInfo.Amount != 2.69 {
+	if o.OrderPriceInfo.Amount != 32.08 {
 		t.Errorf("TestPriceOrder-Order returned %f expected %f", o.OrderPriceInfo.Amount, 2.69)
 	}
 }

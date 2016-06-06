@@ -1,5 +1,19 @@
 {
-  "items":[{"sku":"123456","quantity":"3"},{"sku":"45678","quantity":"2"}],
-  "shippingAddress":{"address1":"p4tin","address2":"1 FortEngine Dr","city":"Philadelphia","state":"PA","postalCode":"19112"}
+  "items":[
+    {
+      "sku":"123456",
+      "quantity":"3"
+    },
+    {
+      "sku":"45678",
+      "quantity":"2"
+    }
+  ],
+  "shippingAddress":{
+    "address1":"p4tin",
+    "address2":"1 JingEngine Dr",
+    "city":"Philadelphia",
+    "state":"PA",
+    "postalCode":"19112"
+  }
 }
-
