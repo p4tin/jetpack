@@ -29,20 +29,20 @@ func TestCreateItem(t *testing.T) {
 }
 
 func TestPriceItemNormal(t *testing.T) {
-	itm := NewItem("1", 2, 0.99)
+	itm := NewItem("100001", 2, 0.99)
 
 	if itm == nil {
 		t.Errorf("PriceItem returned a nil expected an Item!!")
 	}
 
 	itm.PriceItem()
-	if itm.ItemPriceInfo.Amount != 1.98 {
+	if itm.ItemPriceInfo.Amount != 49.90 {
 		t.Errorf("PriceItem did not price correctly, expected %f, got %f.", 1.98, itm.ItemPriceInfo.Amount)
 	}
 }
 
 func TestPriceItemZero(t *testing.T) {
-	itm := NewItem("1", 0, 0.99)
+	itm := NewItem("100001", 0, 0.99)
 
 	if itm == nil {
 		t.Errorf("PriceItem returned a nil expected an Item!!")

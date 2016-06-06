@@ -12,12 +12,12 @@ const (
 type Promotion struct {
 	Name       string
 	Type       PromotionType
-	PercentOff float32
+	PercentOff float64
 }
 
 var Promotions []Promotion
 
-func NewPromotion(pName string, pType PromotionType, pPercentOff float32) *Promotion {
+func NewPromotion(pName string, pType PromotionType, pPercentOff float64) *Promotion {
 	promo := new(Promotion)
 	promo.Name = pName
 	promo.Type = pType

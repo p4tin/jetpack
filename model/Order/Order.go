@@ -12,10 +12,10 @@ import (
 )
 
 type Order struct {
-	Items              []item.Item                           `json:"items"`
-	OrderPriceInfo     priceinfo.PriceInfo                   `json: "orderpriceInfo"`
-	ShippingAddress    address.Address                       `json:"shippingAddress"`
-	PricingAdjustments []pricingadjustment.PricingAdjustment `json:"PricingAdjsutments"`
+	Items              []item.Item                           `json:"items,omitempty"`
+	OrderPriceInfo     priceinfo.PriceInfo                   `json: "orderPriceInfo,omitempty"`
+	ShippingAddress    address.Address                       `json:"shippingAddress,omitempty"`
+	PricingAdjustments []pricingadjustment.PricingAdjustment `json:"pricingAdjustments,omitempty"`
 }
 
 func NewOrder() *Order {
@@ -43,7 +43,7 @@ func (o *Order) PriceOrder() {
 	}
 	wg.Wait()
 
-	sum := float32(0.0)
+	sum := float64(0.0)
 	for _, itm := range o.Items {
 		sum += itm.ItemPriceInfo.Amount
 	}
@@ -63,7 +63,7 @@ func (o *Order) ApplyOrderLevelPromotions() {
 		promo := promotion.Promotions[0]
 		if promo.Type == promotion.OrderPromotion {
 			if promo.PercentOff > 0.0 {
-				adjustBy := float32(roundFloat(float64(o.OrderPriceInfo.Amount/100*promo.PercentOff)+.005, 2))
+				adjustBy := float64(roundFloat(float64(o.OrderPriceInfo.Amount/100*promo.PercentOff)+.005, 2))
 				o.OrderPriceInfo.Amount = o.OrderPriceInfo.Amount - adjustBy
 				adj := pricingadjustment.NewPricingAdjustment()
 				adj.AddDescription(promo.Name)
