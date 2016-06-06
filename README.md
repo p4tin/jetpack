@@ -14,14 +14,12 @@ We also will be using Docker as a deployment strategy for JetPack which will all
 
 ### Developper Install and Prep (5 mins or less)
 
-1. Create a Go Workspace (JetPack/src, JetPack/pkg, JetPack/bin)
-2. Clone this Git repository in the src directory of your workspace
-3. Export your GOPATH to the JetPack directory you created above
-4. cd to the JetPack directory created above
-4. Run the unit tests
-	* go test ./...
-5. Run the application
-	* go run
+1. Clone this repo
+2. cd to the directory
+3. go get -t -v ./...
+4. run the tests "go test ./..."
+5. run the app "go run JetPack.go"
+6. Test with the [Postman collection](https://www.getpostman.com/collections/f50e87593e922a71d841)
  
 
 ### Install a JetPack Component
