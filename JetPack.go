@@ -10,25 +10,32 @@ import (
 	"github.com/p4tin/jetpack/model/Order"
 	"github.com/p4tin/jetpack/model/PriceInfo"
 	"github.com/p4tin/jetpack/model/PricingAdjustment"
+	"fmt"
 )
 
 func main() {
 	mux := mux.NewRouter()
 	mux.HandleFunc("/pricing", Pricing)
+	log.Println("Starting to listen on port 4101")
 	log.Fatal(http.ListenAndServe(":4101", mux))
 }
 
 func Pricing(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
-		decoder := json.NewDecoder(r.Body)
+		if r.Body == nil {
+			http.Error(w, "Please send a request body", 400)
+			return
+		}
 		var order order.Order
-		err := decoder.Decode(&order)
+		err := json.NewDecoder(r.Body).Decode(&order)
 		if err != nil {
-			panic("failed to decode")
+			log.Fatal(err)
 		}
 		order.PriceOrder()
+		jsonOrder, _ := json.MarshalIndent(order, "    ", "  ")
 
-		w.Write([]byte("Hello " + order.ShippingAddress.Address1))
+		fmt.Fprintf(w, string(jsonOrder))
+		//w.Write([]byte("Hello " + order.OrderPriceInfo.Amount))
 	} else {
 		if r.URL.Query().Get("forceGet") == "true" {
 			adjustments := pricingadjustment.PricingAdjustment{AdjustmentDescription: "raw", Amount: 12.0}

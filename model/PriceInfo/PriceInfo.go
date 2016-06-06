@@ -15,16 +15,16 @@ const (
 )
 
 type PriceInfo struct {
-	Type          PriceInfoType                       `json:"type"`
-	CurrencyCode  string                              `json:"currencyCode"`
-	ProcessedTime time.Time                           `json:"processedTime"`
-	Amount        float32                             `json:"amount"`
-	UnitPrice     float32                             `json:"unitPrice"`
-	Discounted    bool                                `json:"discouted"`
-	Adjustments   pricingadjustment.PricingAdjustment `json:"adjustments"`
+	Type          PriceInfoType                       `json:"type,omitempty"`
+	CurrencyCode  string                              `json:"currencyCode,omitempty"`
+	ProcessedTime time.Time                           `json:"processedTime,omitempty"`
+	Amount        float64                             `json:"amount,omitempty"`
+	UnitPrice     float64                             `json:"unitPrice,omitempty"`
+	Discounted    bool                                `json:"discouted,omitempty"`
+	Adjustments   pricingadjustment.PricingAdjustment `json:"adjustments,omitempty"`
 }
 
-func NewPriceInfo(pPrice float32) *PriceInfo {
+func NewPriceInfo(pPrice float64) *PriceInfo {
 	info := new(PriceInfo)
 	info.UnitPrice = pPrice
 	return info
